@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "Proyecto de backend de rollingCoffee",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [],
   "author": "Arias Emilse",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3"
+  }
 }
