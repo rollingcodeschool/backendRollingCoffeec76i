@@ -1,7 +1,6 @@
 import express from 'express';
 
-console.log('hola mundo')
-console.log('hola mundo v2')
+console.log('hola mundo sdfsdmnbsdnfbs ddf')
 
 //1 - configurar un puerto
 
