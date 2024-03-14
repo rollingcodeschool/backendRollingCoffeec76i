@@ -67,3 +67,22 @@ export const editarProducto = async(req, res)=>{
     res.status(500).json({mensaje:"Ocurrio un error no se pudo editar el producto"})
  }
 }
+
+export const borrarProducto = async(req, res)=>{
+ try{
+    //verificar si el producto existe
+    const productoBuscado = await Producto.findById(req.params.id);
+    if(!productoBuscado){
+        //responder si no es correcto
+        return res.status(404).json({mensaje:"No se pudo borrar el producto con el id especificado"})
+    }
+    //si el producto existe y sus datos son validados correctamente, solicitamos borrar
+    await Producto.findByIdAndDelete(req.params.id)
+    //responder al usuario
+    res.status(200).json({mensaje: "El producto fue eliminado exitosamente"})
+ }
+ catch(error){
+    console.error(error);
+    res.status(500).json({mensaje:"Ocurrio un error no se pudo borrar el producto"})
+ }
+}
