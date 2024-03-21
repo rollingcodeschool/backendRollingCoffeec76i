@@ -27,6 +27,26 @@ const validacionProducto = [
       .matches(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)/)
       .withMessage('La imagen debe ser una url valida y terminar con alguna de las siguientes extensiones (jpg|jpeg|gif|png)')
       ,
+      check('categoria')
+      .notEmpty()
+      .withMessage('La categoria es un dato obligatorio')
+      .isIn(['Infusiones', 'Batidos','Dulce', 'Salado'])
+      .withMessage("La categoria debe ser una de las siguientes opciones ('Infusiones', 'Batidos','Dulce', 'Salado')")
+      ,
+      check("descripcion_breve")
+      .notEmpty()
+      .withMessage("La descripcion breve es un dato obligatorio")
+      .isLength({ min: 3, max: 30 })
+      .withMessage(
+        "La descripcion breve debe contener entre 3 y 30 caracteres"
+      ),
+      check("descripcion_amplia")
+      .notEmpty()
+      .withMessage("La descripcion amplia es un dato obligatorio")
+      .isLength({ min: 50, max: 1000 })
+      .withMessage(
+        "La descripcion amplia debe contener entre 50 y 1000 caracteres"
+      ),
     (req, res, next) => resultadoValidacion(req,res,next)
   ]
 
