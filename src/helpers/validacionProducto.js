@@ -21,6 +21,12 @@ const validacionProducto = [
               throw new Error('El precio debe estar entre $50 y $10000')
           }
       }),
+      check('imagen')
+      .notEmpty()
+      .withMessage('La imagen es un dato obligatorio')
+      .matches(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)/)
+      .withMessage('La imagen debe ser una url valida y terminar con alguna de las siguientes extensiones (jpg|jpeg|gif|png)')
+      ,
     (req, res, next) => resultadoValidacion(req,res,next)
   ]
 
